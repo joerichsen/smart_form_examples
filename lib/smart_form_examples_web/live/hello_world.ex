@@ -24,6 +24,7 @@ defmodule SmartFormExamplesWeb.HelloWorldLive do
       </:actions>
     </.simple_form>
 
+    <h2 class="mt-5">Users</h2>
     <ul>
       <%= for user <- @users do %>
         <li><%= user.name %> - <%= user.email %></li>
@@ -35,7 +36,13 @@ defmodule SmartFormExamplesWeb.HelloWorldLive do
   def mount(_params, _session, socket) do
     form = Form.new(%User{})
     users = Repo.all(User)
-    {:ok, assign(socket, form: form, users: users)}
+    {:ok, load_data(socket)}
+  end
+
+  def load_data(socket) do
+    form = Form.new(%User{})
+    users = Repo.all(User)
+    assign(socket, form: form, users: users)
   end
 
   def handle_event("validate", %{"form" => params}, socket) do
@@ -48,9 +55,7 @@ defmodule SmartFormExamplesWeb.HelloWorldLive do
 
     if form.valid? do
       form |> Form.changeset() |> Repo.insert()
-      form = Form.new()
-      users = Repo.all(User)
-      {:noreply, assign(socket, form: form, users: users)}
+      {:noreply, load_data(socket)}
     else
       {:noreply, assign(socket, form: form)}
     end
