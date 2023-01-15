@@ -14,7 +14,7 @@ defmodule SmartFormExamplesWeb.HelloWorldLive do
 
   def render(assigns) do
     ~H"""
-    <h1>Hello World</h1>
+    <.header>Hello World</.header>
 
     <.simple_form :let={f} for={@form} phx-change="validate" phx-submit="save">
       <.input field={{f, :name}} label="name" />
@@ -24,7 +24,7 @@ defmodule SmartFormExamplesWeb.HelloWorldLive do
       </:actions>
     </.simple_form>
 
-    <h2 class="mt-5">Users</h2>
+    <.header class="mt-5">Users</.header>
     <ul>
       <%= for user <- @users do %>
         <li><%= user.name %> - <%= user.email %></li>
