@@ -18,6 +18,8 @@ defmodule SmartFormExamplesWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+
+    live "/hello_world", HelloWorldLive
   end
 
   # Other scopes may use custom stacks.

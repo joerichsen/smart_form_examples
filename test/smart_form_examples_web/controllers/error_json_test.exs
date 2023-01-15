@@ -2,7 +2,9 @@ defmodule SmartFormExamplesWeb.ErrorJSONTest do
   use SmartFormExamplesWeb.ConnCase, async: true
 
   test "renders 404" do
-    assert SmartFormExamplesWeb.ErrorJSON.render("404.json", %{}) == %{errors: %{detail: "Not Found"}}
+    assert SmartFormExamplesWeb.ErrorJSON.render("404.json", %{}) == %{
+             errors: %{detail: "Not Found"}
+           }
   end
 
   test "renders 500" do
