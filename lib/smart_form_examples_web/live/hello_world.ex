@@ -14,7 +14,18 @@ defmodule SmartFormExamplesWeb.HelloWorldLive do
 
   def render(assigns) do
     ~H"""
-    <.header>Hello World</.header>
+    <.header>
+      Hello World
+      <:subtitle>
+        <a
+          class="underline"
+          target="_blank"
+          href="https://github.com/joerichsen/smart_form_examples/blob/main/lib/smart_form_examples_web/live/hello_world.ex"
+        >
+          Check out the source
+        </a>
+      </:subtitle>
+    </.header>
 
     <.simple_form :let={f} for={@form} phx-change="validate" phx-submit="save">
       <.input field={{f, :name}} label="name" />
@@ -34,8 +45,6 @@ defmodule SmartFormExamplesWeb.HelloWorldLive do
   end
 
   def mount(_params, _session, socket) do
-    form = Form.new(%User{})
-    users = Repo.all(User)
     {:ok, load_data(socket)}
   end
 
