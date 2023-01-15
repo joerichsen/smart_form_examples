@@ -1,6 +1,6 @@
 # SmartForm Examples
 
-## This repo contains some examples of using the ['SmartForm'](https://hex.pm/packages/smart_form) hex package.
+This repo contains some examples of using the [SmartForm](https://hex.pm/packages/smart_form) hex package.
 
 ## Getting started
 Start your Phoenix server:
